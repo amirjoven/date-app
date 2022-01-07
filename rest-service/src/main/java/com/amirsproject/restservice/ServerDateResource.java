@@ -26,7 +26,7 @@ public class ServerDateResource {
         return z.toString();        
     }
 	
-	public long getServerUnixTimestamp(){
-		return serverDate.getTime() / 1000L;
-	}
+	// public long getServerUnixTimestamp(){
+	// 	return serverDate.getTime() / 1000L;
+	// }
 }

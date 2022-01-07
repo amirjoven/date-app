@@ -13,7 +13,7 @@ export class DateServiceService {
   private dateConvertionServiceUrl: string;
     
   constructor(private http: HttpClient) {
-    this.dateserviceUrl = 'http://localhost:8080/';
+    this.dateserviceUrl = 'http://54.197.40.117:8080/rest-service/';
     this.dateConvertionServiceUrl = 'http://api.timezonedb.com/v2.1/convert-time-zone?key=ZI9A9VBW48IS';
   }
 
@@ -21,7 +21,7 @@ export class DateServiceService {
     return this.http.get<Dateinfo>(this.dateserviceUrl).pipe(switchMap(
       datedata => {
         const unixservertime = new Date(datedata.serverDate+'T'+datedata.serverTime).getTime() / 1000;
-        const options = { params: new HttpParams().set('format', 'json').set("from",datedata.serverTimezone ).set('to','America/New_York').set('time',unixservertime) }           
+        const options = { params: new HttpParams().set('format', 'json').set("from",datedata.serverTimezone ).set('to','Asia/Shanghai').set('time',unixservertime) }           
           return this.http.get<Dateconversioninfo>(this.dateConvertionServiceUrl,options).pipe(map(convdata  =>  
               {                
                 const dInfo = datedata;                
